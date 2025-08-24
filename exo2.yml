@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: API Utilisateurs
+  version: 1.0.0
+  description: Une API simple pour gérer les utilisateurs avec pagination.
+paths:
+  /users:
+    get:
+      summary: Récupère une liste d’utilisateurs
+      description: Retourne une liste d’utilisateurs avec pagination.
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+
+          description: Numéro de la page (par défaut 1).
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Nombre d’utilisateurs par page (par défaut 20).
+      responses:
+        '200':
+          description: Liste des utilisateurs retrouvés
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Alice
+                    email:
+                      type: string
+                      format: email
+                      example: alice@example.com
+        '400':
+          description: Mauvais types de paramètres fournis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Bad types for 
+
+provided query parameters"

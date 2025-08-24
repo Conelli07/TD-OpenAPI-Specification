@@ -1,0 +1,18 @@
+openapi: 3.0.3
+info:
+  title: API Ping
+  version: 1.0.0
+  description: Une API très simple qui répond "pong" à une requête GET sur /ping.
+paths:
+  /ping:
+    get:
+      summary: Vérifie si l’API est vivante
+      description: Retourne "pong" en réponse à un ping.
+      responses:
+        '200':
+          description: Réponse réussie
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: pong
